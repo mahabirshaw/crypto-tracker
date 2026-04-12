@@ -22,3 +22,6 @@ JavaScript (Fetch API, Array Higher Order Functions)
 
 # Objective:
 The objective of this project is to build a responsive web application using JavaScript, integrate a public API, and implement dynamic features like search, filter, and sorting using array higher-order functions.
+
+# Deploy Link:
+Live Demo: https://mahabirshaw.github.io/crypto-tracker/
