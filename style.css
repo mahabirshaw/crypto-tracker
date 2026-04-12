@@ -9,6 +9,23 @@ h1 {
   margin: 20px;
 }
 
+#search {
+  padding: 8px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  margin-bottom: 15px;
+}
+
+button {
+  margin: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 #container {
   display: flex;
   flex-wrap: wrap;
@@ -32,9 +49,13 @@ img {
   font-size: 20px;
   margin-top: 20px;
 }
-button {
-  margin: 5px;
-  padding: 8px;
-  border-radius: 5px;
-  cursor: pointer;
+
+/* Dark mode */
+.dark {
+  background: white;
+  color: black;
+}
+
+.dark .card {
+  background: #eee;
 }

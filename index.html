@@ -11,19 +11,17 @@
 
   <input type="text" id="search" placeholder="Search coin..." />
 
-  <button onclick="sortHigh()">Sort Price High → Low</button>
-  <button onclick="sortLow()">Sort Price Low → High</button>
-  <button onclick="top10()">Top 10 Coins</button>
-  <button onclick="resetData()">Reset</button>
-
-<div id="loader">Loading...</div>
-<div id="container"></div>
+  <div class="buttons">
+    <button onclick="sortHigh()">Sort Price High → Low</button>
+    <button onclick="sortLow()">Sort Price Low → High</button>
+    <button onclick="top10()">Top 10 Coins</button>
+    <button onclick="resetData()">Reset</button>
+    <button onclick="toggleMode()">Change Theme</button>
+  </div>
 
   <div id="loader">Loading...</div>
 
   <div id="container"></div>
-
-  
 
   <script src="script.js"></script>
 </body>

@@ -1,10 +1,11 @@
-const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr";
+const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd";
 
 let allData = [];
 
 const container = document.getElementById("container");
 const loader = document.getElementById("loader");
 const searchInput = document.getElementById("search");
+
 
 async function getData() {
   try {
@@ -16,15 +17,22 @@ async function getData() {
     allData = data;
     displayData(data);
 
-    loader.style.display = "none";
   } catch (error) {
     console.log("Error:", error);
     loader.innerText = "Failed to load data";
   }
 }
 
+
 function displayData(data) {
   container.innerHTML = "";
+  loader.style.display = "none";
+
+  
+  if (!data || data.length === 0) {
+    container.innerHTML = "<h2>No coins found</h2>";
+    return;
+  }
 
   data.map((coin) => {
     const div = document.createElement("div");
@@ -43,26 +51,28 @@ function displayData(data) {
   });
 }
 
-// SEARCH
-searchInput.addEventListener("input", () => {
-  const query = searchInput.value.toLowerCase();
 
-  const filtered = allData.filter((coin) =>
-    coin.name.toLowerCase().includes(query)
-  );
+if (searchInput) {
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
 
-  displayData(filtered);
-});
+    const filtered = allData.filter((coin) =>
+      coin.name.toLowerCase().includes(query)
+    );
 
-// SORT HIGH → LOW
-function sortHigh() {
+    displayData(filtered);
+  });
+}
+
+
+  function sortHigh() {
   const sorted = [...allData].sort(
     (a, b) => b.current_price - a.current_price
   );
   displayData(sorted);
 }
 
-// SORT LOW → HIGH
+
 function sortLow() {
   const sorted = [...allData].sort(
     (a, b) => a.current_price - b.current_price
@@ -70,15 +80,20 @@ function sortLow() {
   displayData(sorted);
 }
 
-// FILTER TOP 10
+
 function top10() {
   const filtered = allData.filter((coin) => coin.market_cap_rank <= 10);
   displayData(filtered);
 }
 
-// RESET
-function resetData() {
+  function resetData() {
   displayData(allData);
 }
+
+
+function toggleMode() {
+  document.body.classList.toggle("dark");
+}
+
 
 getData();
